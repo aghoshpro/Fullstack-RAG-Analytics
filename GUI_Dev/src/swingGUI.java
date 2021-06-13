@@ -16,6 +16,7 @@ public class swingGUI {
 		ImageIcon img = new ImageIcon("among-us-player-pink-512.png"); // Create a image icon
 		ImageIcon img2 = new ImageIcon("Potter.png");
 		Border border = BorderFactory.createLineBorder(Color.red, 10);
+		
 		// JLabel = add text, images in GUI window 
 
 		JLabel label = new JLabel();   

@@ -1,17 +1,26 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class swingPanels {
 
 	public static void main(String[] args) {
 		
+		// Image
+		ImageIcon img = new ImageIcon("among-us-player-pink-512.png"); // Create a image icon
+		ImageIcon img2 = new ImageIcon("Potter.png");
+		
 		// JPanel = a GUI component that functions as container to hold other component
 		
 		JPanel redPanel = new JPanel();
 		redPanel.setBackground(Color.red);
 		redPanel.setBounds(0,0,150,150);
+		redPanel.setLayout(new BorderLayout());
 		
 		JPanel bluePanel = new JPanel();
 		bluePanel.setBackground(Color.blue);
@@ -26,10 +35,14 @@ public class swingPanels {
 		yellowPanel.setBounds(150,150,150,150);
 		
 		
+		// JLabel
 		
+		JLabel label = new JLabel();
 		
-		
-		
+		label.setText("HI there babe");
+		label.setForeground(new Color(0xffffff));          // Set font color
+        label.setFont(new Font("Adobe Devanagari", Font.BOLD, 20)); // Set font style
+        label.setIcon(img2);
 		
 		
 		
@@ -47,9 +60,12 @@ public class swingPanels {
 		frame.add(bluePanel); // MUST add the new component   
 		frame.add(greenPanel);
 		frame.add(yellowPanel);
-		ImageIcon img = new ImageIcon("among-us-player-pink-512.png"); // Create a image icon
-		frame.setIconImage(img.getImage());  // Change icon of the frame 
+		
+		yellowPanel.add(label);  // to add the text to red panel
 
+		 
+		
+		frame.setIconImage(img.getImage());  // Change icon of the frame
 		//frame.getContentPane().setBackground(new Color(255,0,65)); // set Background RGB color of window  
 		frame.getContentPane().setBackground(new Color(0x000000)); // set Background HEX color of window
 		
