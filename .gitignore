@@ -33,6 +33,7 @@ lib64/
 parts/
 sdist/
 var/
+store/
 wheels/
 share/python-wheels/
 *.egg-info/

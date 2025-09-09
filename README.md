@@ -1,8 +1,8 @@
 # RAG Analytics
 
-Fullstack AI + Data integration project that stores data locally. It performs a “Natural Query To SQL Query” service over a small dataset.
+Fullstack AI + Data integration project performs a “Text-To-SQL” query using LLMs ChatGPT, Claude and Ollama over a small dataset stored locally. More data can be added.
 
-<img src="./20250904_172527.gif">
+<img src="./20250909_194238.gif">
 
 
 
@@ -103,9 +103,11 @@ The core of the backend is a LangGraph agent defined in `backend/src/agent/graph
 
 Click on `http://localhost:8123/app/` to see the application.
 
-### Example queries 
+### Queries 
+- What is the average, maximum and minimum turnover of each country?
+- What is the average, maximum and minimum turnover of France? 
 - What are the countries with the maximum turnover? 
-- What is the maximum turnover of Belgium? 
+- List all the countries
 
 
 ## Deployment

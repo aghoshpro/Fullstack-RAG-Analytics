@@ -16,7 +16,7 @@ class Configuration(BaseModel):
     )
     
     reasoning_model: str = Field(
-        default="gpt-3.5-turbo",
+        default="gpt-4o-mini",
         metadata={
             "description": "The name of the language model to use for the agent's reasoning."
         },
