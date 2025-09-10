@@ -131,7 +131,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Storybook build outputs
 .out
@@ -145,7 +144,6 @@ temp/
 *.local
 
 # Database files (if you want to ignore them)
-*.sqlite
 *.sqlite3
 *.db
 

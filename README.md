@@ -8,22 +8,22 @@ Fullstack AI + Data integration project performs a “Text-To-SQL” query using
 
 ## Key Highlights
 
-- 💬 **Fullstack Application**: Combines a React frontend with a LangGraph backend, representing each state of execution as a node.
-- 🤔 **Automatic Routing**: Identifies which action to perform (RAG-based or analytics), addresses knowledge gaps, and refines searches.
+- **Fullstack Application**: Combines a React frontend with a LangGraph backend, representing each state of execution as a node.
+- **Automatic Routing**: Identifies which action to perform (RAG-based or analytics), addresses knowledge gaps, and refines searches.
 
-- The data files are located in the `backend/data` folder (including `products.csv` and `rules.md`), from which the store folder is created containing SQLite databases for both files and embeddings.
+- The data files are located in the `backend/data` folder (including `products.csv` and `rules.md`), from which the `frontend/store` folder is created containing SQLite databases for both files and embeddings.
 
 - The project is organized into two main directories:
 
   - `frontend/`: Contains the React application built with Vite.
   - `backend/`: Contains the LangGraph/FastAPI application, including the agent logic.
 
-Here's what the program does:
+### Here's what the program does:
 
 1. **Data Ingestion & Indexing**: Raw data is ingested and indexed into a vector store.
 2. **Context Retrieval**: Retrieves relevant context for free-text questions.
 3. **Ad-hoc Analytics**: Performs SQL-style queries for analytics.
-4. **Natural Language Generation**: Generates natural-language answers via OpenAI, with a persona flag to adjust tone.
+4. **Natural Language Generation**: Generates natural answers via OpenAI, with a persona flag to adjust tone.
 5. **HTTP API Exposure**: Exposes a simple HTTP API.
 6. **Docker Containerization**: Containerizes the application for deployment.
 
@@ -35,9 +35,10 @@ Here's what the program does:
 
 - [React](https://reactjs.org/) (with [Vite](https://vitejs.dev/)) - For the frontend user interface.
 - [Tailwind CSS](https://tailwindcss.com/) - For styling.
-- [Shadcn UI](https://ui.shadcn.com/) - For components.
+- [Shadcn UI](https://ui.shadcn.com/) - For ui components.
 - [LangGraph](https://github.com/langchain-ai/langgraph) - For building the backend research agent.
-- [Open AI](https://platform.openai.com/docs/models) - LLM for query generation and answer synthesis.
+- [Open AI](https://platform.openai.com/docs/models) - CHatGPT as LLM for query generation and answer synthesis.
+- [Ollama](https://ollama.com/) - Use local LLM like llama3.2, llama3.3 for query generation so the data stays in your local 
 
 
 ## Local Development and Testing
@@ -49,25 +50,21 @@ Here's what the program does:
 - **API Keys**: The backend agent requires an OpenAI API key.
   1. Navigate to the main directory.
   2. navigate to the `backend\` folder
-  3. Open the `.env` file and add your OpenAI API key: `OPENAI_API_KEY="YOUR_ACTUAL_API_KEY"` and your LangSmith API Key: `LANGSMITH_API_KEY=YOUR_API_KEY`
+  3. Add the followings to the `.env` file 
+     - OpenAI API key: `OPENAI_API_KEY`=sk-proj-..........
+     - LangSmith API Key: `LANGSMITH_API_KEY`=lsv2_...........
 
-## Backend
+## Frontend (ReactJs + TypeScript)
 
-Use `uv` as the package manager.
+- Go to `frontend\` and use `npm` to download node modules
 
+  ```bash
+  cd frontend
+  ```
 
-```bash
-cd backend
-uv sync
-```
-
-## Frontend
-
-use npm to download node moduls
-```bash
-cd frontend
-npm install
-```
+  ```bash
+  npm install
+  ```
 
 - To fix vulnerabilities if occurs 
 
@@ -79,35 +76,47 @@ npm install
      ```sh
      npm audit fix --force
      ```
-## Run Development Servers:
 
-**Backend:**
+- Run the cmd to open frontend web app at  _`http://localhost:5173/app`_
 
-```bash
-cd backend
-uv run langgraph dev --allow-blocking
-```
+    ```sh
+    npm run dev
+    ```
 
-**Frontend:**
 
-```bash
-cd frontend
-npm run dev
-```
+## Backend (Python + LangGraph)
 
-_The backend API will be available at `http://127.0.0.1:2024\docs`. It will also open a browser window to the FastAPI docs where request can be accessed. For the frontend, open a terminal in the `frontend/` directory and run `npm run dev`. The frontend will be available at `http://localhost:5173/app`_
+- Navigate to `backend\`and use `uv` as the package manager to set up python env as stated in `pyproject.toml`.
 
-The core of the backend is a LangGraph agent defined in `backend/src/agent/graph.py`. It follows these steps:
+  ```bash
+  cd backend
+  ```
 
-## Run the App
+  ```bash
+  uv sync
+  ```
+- Run the **LangGraph development server** with the `--allow-blocking` flag, which enables blocking operations in the agent workflow during development.
 
-Click on `http://localhost:8123/app/` to see the application.
+  ```bash
+  uv run langgraph dev --allow-blocking
+  ```
 
-### Queries 
+
+- The backend API will be available at `http://127.0.0.1:2024\docs`. It will also open a browser window to the FastAPI docs where request can be accessed.  The core of the backend is a LangGraph agent defined in `backend/src/agent/graph.py` which follows the steps below:
+
+  <img src="./agent.png" style="width:500px">
+
+
+<!-- For the frontend, open a terminal in the `frontend/` directory and run `npm run dev`.  -->
+
+## Queries 
+
+Click on `http://localhost:5173/app/` to see the web application.
+
+
 - What is the average, maximum and minimum turnover of each country?
-- What is the average, maximum and minimum turnover of France? 
 - What are the countries with the maximum turnover? 
-- List all the countries
+- List all the countries segment wise
 
 
 ## Deployment
