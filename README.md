@@ -2,7 +2,7 @@
 
 Fullstack AI + Data integration project performs a “Text-To-SQL” query using LLMs ChatGPT, Claude and Ollama over a small dataset stored locally. More data can be added.
 
-<img src="./20250909_194238.gif">
+<img src="./appGUI.gif">
 
 
 
